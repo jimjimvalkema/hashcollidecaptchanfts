@@ -10,6 +10,6 @@ TODO
 edit parameters inside the script 🙃
 
 run it:
-`python3 hashcollidecaptchas.py`
+`python3 hashcollidecaptchas.py`   
 Then send 0.05 ETH to the captcha nft contract and add the hex data in metamask.   
 Make sure to dubbel check the gaslimit and if it's not already minted!
