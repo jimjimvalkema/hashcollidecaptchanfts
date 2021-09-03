@@ -6,3 +6,6 @@ Use at your own risk! make sure you know what ur doing
 
 Tutorial
 TODO
+edit parameters inside the script 🙃
+
+`python3 hashcollidecaptchas.py`
