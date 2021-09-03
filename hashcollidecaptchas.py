@@ -19,7 +19,7 @@ def getCaptcha(string):
 				webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(i))
 				print(i, string)
 				try:
-					print("send to {} and add this to the hex field in metamask: {}".format(contract_address,get_tx_data(i,string,pers_addr)['data']))
+					print("send 0.05 ETH to {} and add this to the hex field in metamask: {}".format(contract_address,get_tx_data(i,string,pers_addr)['data']))
 				except Exception as e2:
 					print(e2)
 				print(e)
