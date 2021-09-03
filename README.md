@@ -8,4 +8,5 @@ Tutorial
 TODO
 edit parameters inside the script 🙃
 
+run it:
 `python3 hashcollidecaptchas.py`
