@@ -16,7 +16,7 @@ def getCaptcha(string):
 			contract_instance.functions.mintCaptcha(i, string).call()
 		except Exception as e:
 			if not (str(e) == "execution reverted: Captcha Already Solved" or str(e) == "execution reverted: Incorrect Captcha"):
-				webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(i))
+				#webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(i))
 				print(i, string)
 				try:
 					print("send 0.05 ETH to {} and add this to the hex field in metamask: {}".format(contract_address,get_tx_data(i,string,pers_addr)['data']))
@@ -57,7 +57,7 @@ def brute_force_id(cap_id, end_char):
 			print("trying {} with {}".format(cap_id, i))
 		except Exception as e:
 			if not (str(e) == "execution reverted: Captcha Already Solved" or str(e) == "execution reverted: Incorrect Captcha"):
-				webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(cap_id))
+				#webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(cap_id))
 				print(cap_id, i)
 				if not str(e) == "execution reverted: Wrong Eth Amount":
 					print("found "+cap_id+"but was already minted")
