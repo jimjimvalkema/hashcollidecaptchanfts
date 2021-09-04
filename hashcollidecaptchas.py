@@ -19,7 +19,7 @@ def getCaptcha(string):
 				#webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(i))
 				print(i, string)
 				try:
-					print("send 0.05 ETH to {} and add this to the hex field in metamask: {}".format(contract_address,get_tx_data(i,string,pers_addr)['data']))
+					print_hex_data_and_instructions(i,string,pers_addr)
 				except Exception as e2:
 					print(e2)
 				print(e)
@@ -59,6 +59,7 @@ def brute_force_id(cap_id, end_char):
 			if not (str(e) == "execution reverted: Captcha Already Solved" or str(e) == "execution reverted: Incorrect Captcha"):
 				#webbrowser.get("firefox").open("https://api.thecaptcha.art/images/"+str(cap_id))
 				print(cap_id, i)
+				print_hex_data_and_instructions(cap_id,i,pers_addr)
 				if not str(e) == "execution reverted: Wrong Eth Amount":
 					print("found "+cap_id+"but was already minted")
 					print(e)
@@ -72,6 +73,12 @@ def get_tx_data(cap_id, solution, addr_from):
 	data = contract_instance.functions.mintCaptcha(cap_id, solution).buildTransaction(
 	{"value" : 50000000000000000, "from" : addr_from})
 	return data
+
+def print_hex_data_and_instructions(cap_id, solution,addres):
+	print("send 0.05 ETH to {} and add this to the hex field in metamask: {}".format(
+	contract_address,
+	get_tx_data(cap_id,solution,addres)
+	['data']))
 
 #setup
 install_solc(version='latest')
@@ -92,11 +99,11 @@ contract_instance = w3.eth.contract(address=contract_address, abi=abi)
 # input ur personal addres (needs enough eth)
 pers_addr = "0x23bc95F84BD43C1FCc2bc285fDa4Cb12f9AEE2df"
 
-#direct matches (ex "cool" and "kewl")
+#direct matches (ex '❤️', '🖤', '🤍') (you can remove this one if you dont need it!)
 getCaptchaList(['❤️', '🖤', '🤍'])
 
-#ends with (ex fsa3cool, 3ecool, afhcool, etc)
+#adds random gibberish to solve for a specific id (ex fsa3💛, 3e💛, afh💛, etc) (you can remove this one if you dont need it!)
 brute_force_id(7612,'💛')
 
-#render tx data
-print(get_tx_data(1302, "🤮", "0x23bc95F84BD43C1FCc2bc285fDa4Cb12f9AEE2df"))
+#render tx data (you can remove this one if you dont need it!)
+print_hex_data_and_instructions(1302, "🤮", "0x23bc95F84BD43C1FCc2bc285fDa4Cb12f9AEE2df")
